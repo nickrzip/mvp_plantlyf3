@@ -1,0 +1,63 @@
+.background {
+    background-color: lightgrey;
+    height: 100vh;
+}
+
+.plant {
+    height: 25vw;
+    width: 10vw;
+    background-color: green;
+    position: relative;
+    top: 10%;
+    left: 50%;
+    margin-top: -18vw;
+    margin-left: -5vw;
+    border: solid black 4px;
+    border-radius: 5px;
+}
+
+.pot {
+    height: 20vw;
+    width: 20vw;
+    background-color: chocolate;
+    position: relative;
+    top: 70%;
+    left: 50%;
+    margin-top: -10vw;
+    margin-left: -10vw;
+    border: solid grey 6px;
+    border-radius: 5px;
+}
+
+.row-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.side-nav {
+    height: 100%;
+    width: 30vw;
+    background-color: darkkhaki;
+}
+
+.sidenav-enter {
+    opacity: 0.01;
+}
+
+.sidenav-enter.sidenav-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.sidenav-enter {
+    opacity: 1;
+}
+
+.sidenav-enter.sidenav-enter-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.plant-area {
+    flex-grow: 1;
+}
