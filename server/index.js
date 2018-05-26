@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use('/hist', histRouter);
 app.use('/users', userRouter);
 
-port = process && process.env.port || 8080;
+port = process.env.port || 8080;
 
 app.listen(port, () => {
     console.log(`listening on ${port}`);
