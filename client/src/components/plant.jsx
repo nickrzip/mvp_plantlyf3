@@ -1,9 +1,23 @@
 import React from 'react'
 
 const Plant = (props) => {
-    return (
-        <div className = 'plant'> This is a protoplant </div>
-    );
+    if (props.currentPlant) {
+        return (
+            <div className = 'plant'>
+                <div className = 'smile'></div>
+            </div>
+        );
+    } else {
+        return (
+            <div></div>
+        )
+    }
+
 }
 
 export default Plant;
+
+
+//Cool things we could do with the available data
+// Use anime js
+// 

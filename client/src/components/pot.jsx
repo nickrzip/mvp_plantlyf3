@@ -3,12 +3,19 @@ import React from 'react'
 import Plant from './plant.jsx'
 
 const Pot = (props) => {
-    return (
-        <div className = 'pot' onClick = {props.clickHandler}> 
-            <Plant/>
-            <span>This is a protopot</span>
-        </div>
-    );
+    if (props.plantIsDead[props.currentPlant]) {
+        return (
+            <div className = 'pot'> 
+                <Plant currentPlant = {props.currentPlant}/>
+            </div>
+        );
+    } else {
+        return (
+            <div className = 'pot'> 
+            </div>
+        )
+
+    }
 }
 
 export default Pot;

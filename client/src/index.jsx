@@ -1,68 +1,115 @@
 import React from 'react';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import ReactDOM from 'react-dom';
 import Pot from './components/pot.jsx';
 import SideNav from './components/sideNav.jsx'
-import axios from 'axios';
+import Onboarding from './components/onboarding.jsx'
+import Axios from 'axios';
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            currentRepo: '',
             allRepos: '',
-            plantIsDead: false,
-            sideNavIsOpen: true
+            plantIsDead: {},
+            sideNavIsOpen: true,
+            sideNavFlag: true,
+            onboardingUser: true,
+            seeds: [],
+            seedsHist: [],
+            currentPlant: '',
+            wateringFrequency: 3*60*60*1000
         }
     }
 
-    addPlant(repoURL) {
-      axios.post('/users', { 
-        repoURL: repoURL
-      }).catch((err) => {
-          var error = err + '\nPlease enter a valid username'
-          alert(error)
+    setWateringFrequency (frequency) {
+        var frequencies = [ 5*1000, 60*1000, 30*60*1000, 60*60*1000, 3*60*60*1000];
+        this.setState({
+            wateringFrequency: frequencies[frequency]
         });
     }
 
+    componentDidMount() {
+
+        setInterval(()=>{
+            if (this.state.seeds.length > 0) {
+                Axios.get('/hist').then((data) => {
+                    this.setState({
+                        seedsHist: data.data
+                    })
+                })
+            }
+        }, 5000);
+
+        setInterval(() => {
+            if(this.state.seedsHist.length !== 0) {
+                for (let plant of this.state.seedsHist) {
+                    var now = Date.now();
+                    var newState;
+                    if (now - Date.parse(plant.lastWatered) > this.state.wateringFrequency) {
+                        newState = Object.assign({}, this.state.plantIsDead);
+                        newState[plant.name] = true;
+                        this.setState({
+                            plantIsDead: newState
+                        });
+                    } else {
+                        newState = Object.assign({}, this.state.plantIsDead);
+                        newState[plant.name] = false;
+                        this.setState({
+                            plantIsDead: newState
+                        });
+                    }
+                }
+            }
+        }, 1000)
+
+    }
+
+    //new Date(Date.parse("2013-05-29T17:35:15Z")-(5*60*1000))
+
     toggleSideNav() {
-        var next = this.state.sideNavIsOpen ? false : true;
+        var next = !this.state.sideNavIsOpen;
         this.setState({
             sideNavIsOpen: next
-        });
+        }), setTimeout(() => {
+            this.setState({
+                sideNavFlag: !this.state.sideNavFlag
+            });
+        }, 500)
+    }
+
+    plantSeeds(names) {
+        this.setState({
+            seeds: names,
+            onboardingUser: false
+        })
+        this.setState({
+            plantIsDead: {}
+        })
+    }
+
+    changePlant(plant) {
+        this.setState({
+            currentPlant: plant
+        })
     }
 
     render () {
 
-        let trigger = false;
-
-        const sideNavState = (isTrue) => {
-            if (isTrue) {
-                trigger = isTrue;
-                return (
-                  <SideNav key = {'sideNav'} clickHandler = {() => {
-                      this.toggleSideNav();
-                  }}/>
-                );
-            } else {
-                return <div></div>
-            }
-        }
-
       return (
           <div className = 'row-container background'>
-            <CSSTransition
-              in = {trigger}
-              classNames = "sidenav"
-              timeout = {1000}
-              children = {sideNavState(this.state.sideNavIsOpen)}>
-              {sideNavState(this.state.sideNavIsOpen)}
-            </CSSTransition>
+            <SideNav sideNavIsOpen = {this.state.sideNavIsOpen} 
+                     sideNavFlag = {this.state.sideNavFlag}
+                     clickHandler = {() => {this.toggleSideNav()}}
+                     seeds = {this.state.seeds}
+                     changePlant = {(plant) => {
+                         this.changePlant(plant);
+                     }}/>
             <div className = 'plant-area'>
-                <Pot clickHandler = {() => {
-                    this.addPlant('www.aplant.com');
-                }}/>
+                <Onboarding onboardingUser = {this.state.onboardingUser}
+                            plantSeeds = {(seeds) => {this.plantSeeds(seeds)}}
+                            setWateringFrequency = {(frequency) => {this.setWateringFrequency(frequency)}}/>
+                <Pot currentPlant = {this.state.currentPlant} plantIsDead = {this.state.plantIsDead}/>
             </div>
           </div>
       )

@@ -1,32 +1,70 @@
 .background {
-    background-color: lightgrey;
+    background-color: #FCF6B1;
     height: 100vh;
 }
 
+.form {
+    position: relative;
+    top: 10vw;
+    left: 50vw;
+    margin-left: -40vw;
+}
+
+.form-options {
+    border: #41891D 2px solid;
+    border-radius: 4px;
+    max-height: 20vw;
+    overflow: scroll;
+}
+
 .plant {
-    height: 25vw;
+    height: 20vw;
     width: 10vw;
     background-color: green;
     position: relative;
-    top: 10%;
+    top: -115%;
     left: 50%;
-    margin-top: -18vw;
+    margin-top: -13vw;
     margin-left: -5vw;
-    border: solid black 4px;
+    border: solid black 3px;
+    border-radius: 8px;
+}
+
+.smile {
+    position: relative;
+    background-image: url(assets/28-512.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 6vw;
+    height: 6vw;
+    margin-left: -3vw;
+    top: 20%;
+    left: 50%;
+}
+
+.dirt{
+    height: 2vw;
+    width: 10vw;
+    background-color: brown;
+    position: relative;
+    left: 50%;
+    margin-top: -2vw;
+    margin-left: -5vw;
     border-radius: 5px;
 }
 
 .pot {
-    height: 20vw;
-    width: 20vw;
-    background-color: chocolate;
+    height: 15vw;
+    width: 18vw;
+    background-image: url('assets/PNGPIX-COM-Flower-Pot-PNG-Transparent-Image-500x419.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
     top: 70%;
     left: 50%;
     margin-top: -10vw;
     margin-left: -10vw;
-    border: solid grey 6px;
-    border-radius: 5px;
 }
 
 .row-container {
@@ -37,7 +75,31 @@
 .side-nav {
     height: 100%;
     width: 30vw;
-    background-color: darkkhaki;
+    background-color: #41891D;
+}
+
+.btn-primary {
+    margin-top: 2vw;
+    margin-left: 2vw;
+}
+
+.btn-secondary {
+    margin-bottom: 2vw;
+}
+
+.btn-success {
+    margin-top: 2vw;
+}
+
+.side-nav-button {
+    position: absolute;
+    margin: 2vw 0 0 2vw;
+    height: 8vw;
+    width: 8vw;
+    border-radius: 10vw;
+    background-color: #41891D;
+    border-width: 4px;
+    border-color: #fff;
 }
 
 .sidenav-enter {
@@ -49,15 +111,24 @@
     transition: opacity 500ms ease-in;
 }
 
-.sidenav-enter {
+.sidenav-exit {
     opacity: 1;
 }
 
-.sidenav-enter.sidenav-enter-active {
+.sidenav-exit.sidenav-exit-active {
     opacity: 0.01;
     transition: opacity 300ms ease-in;
 }
 
 .plant-area {
     flex-grow: 1;
+}
+
+.frequency {
+    margin-top: 2vw;
+}
+
+.water {
+    color: royalblue;
+    margin-right: 1vw;
 }

@@ -1,21 +1,20 @@
 var express = require ('express');
 var getAllRepos = require('../helpers/github.js');
 
-var userRouter = express.Router();
+exports.userRouter = express.Router();
 
-userRouter.get('/', () => {
+exports.currentUser = '';
+
+exports.userRouter.get('/', () => {
   console.log('hey');
 })
 
-userRouter.post('/', (req, res) => {
-  var newRepo = getAllRepos('jamiecounsell').then((data) => {
-    console.log(data);
-  }).then(() => {
-    res.status(200).send();
+exports.userRouter.post('/', (req, res) => {
+  exports.currentUser = req.body.userName;
+  var newRepo = getAllRepos(req.body.userName).then((data) => {
+    res.status(200).send(data);
   }).catch((err) => {
-    res.status(400).send(err);
     console.log(err);
+    res.status(400).send();
   });
 })
-
-module.exports = userRouter;
