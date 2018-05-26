@@ -4,7 +4,8 @@ const Tombstone = (props) => {
     if (props.currentPlant) {
         return (
             <div className = 'tombstone'>
-                {props.currentPlant.name}
+                {props.currentPlant.name + '\n' + '\n'}
+                {props.currentPlant.created_at.substring(0,10)} to {props.currentPlant.updated_at.substring(0,10)}
             </div>
         );
     } else {

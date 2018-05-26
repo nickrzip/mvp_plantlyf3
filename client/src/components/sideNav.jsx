@@ -30,7 +30,7 @@ class SideNav extends React.Component {
                 in = {!this.props.sideNavIsOpen}
                 classNames = "sidenav"
                 timeout = {700}>
-                <div className = 'side-nav-button' onClick = {this.props.clickHandler}></div>
+                <div className = 'side-nav-button cactus' onClick = {this.props.clickHandler}></div>
             </CSSTransition>)
         }
     }

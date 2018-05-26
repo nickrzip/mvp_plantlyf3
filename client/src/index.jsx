@@ -12,8 +12,8 @@ class App extends React.Component {
         this.state = {
             allRepos: '',
             plantIsDead: {},
-            sideNavIsOpen: true,
-            sideNavFlag: true,
+            sideNavIsOpen: false,
+            sideNavFlag: false,
             onboardingUser: true,
             seeds: [],
             seedsHist: [],
