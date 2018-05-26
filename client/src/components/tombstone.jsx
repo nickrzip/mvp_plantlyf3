@@ -11,7 +11,7 @@ const Tombstone = (props) => {
         );
     } else {
         return (
-            <div></div>
+            <div><div></div></div>
         )
     }
 
@@ -22,4 +22,4 @@ export default Tombstone;
 
 //Cool things we could do with the available data
 // Use anime js
-// 
+// asdfasdfnasdjnflsadnflknasdf
