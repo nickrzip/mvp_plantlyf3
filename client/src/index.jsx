@@ -39,10 +39,10 @@ class App extends React.Component {
                     })
                 })
             }
-        }, 5000);
+        }, 3000);
 
         setInterval(() => {
-            if(this.state.seedsHist.length !== 0) {
+            if(this.state.seedsHist.length !== 0 && this.currentPlant !== '') {
                 for (let plant of this.state.seedsHist) {
                     var now = Date.now();
                     var newState;
@@ -59,6 +59,14 @@ class App extends React.Component {
                             plantIsDead: newState
                         });
                     }
+                }
+                if (this.state.currentPlant) {
+                    var newCurrPlant = this.state.seeds.filter((seed) => {
+                        return this.state.currentPlant.name === seed.name
+                    })
+                    this.setState({
+                        currentPlant : newCurrPlant[0]
+                    })
                 }
             }
         }, 1000)

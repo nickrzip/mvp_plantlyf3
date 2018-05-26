@@ -30,6 +30,22 @@
     border-radius: 8px;
 }
 
+.tombstone {
+    height: 17vw;
+    width: 14vw;
+    background-color: grey;
+    position: relative;
+    top: -115%;
+    left: 50%;
+    margin-top: -13vw;
+    margin-left: -7vw;
+    border: solid black 3px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    font-size: 2vw;
+}
+
 .smile {
     position: relative;
     background-image: url(assets/28-512.png);

@@ -1,4 +1,5 @@
 import React from 'react'
+import Tombstone from './tombstone.jsx'
 
 import Plant from './plant.jsx'
 
@@ -12,6 +13,7 @@ const Pot = (props) => {
     } else {
         return (
             <div className = 'pot'> 
+                <Tombstone currentPlant = {props.currentPlant}/>
             </div>
         )
 
