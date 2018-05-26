@@ -92,11 +92,13 @@ class Onboarding extends React.Component {
                         <div className = "frequency">
                             <i className = 'fa fa-tint water'/>
                             <select onChange = {((event) => this.handleStep1InputChange(event))}>
+                                <option value = "Default">Default - 30 Seconds</option>
                                 <option value = "5 Seconds">5 Seconds</option>
                                 <option value = "1 Minute">1 Minute</option>
                                 <option value = "30 Minutes">30 Minutes</option>
                                 <option value = "1 Hour">1 Hour</option>
                                 <option value = "3 Hours">3 Hours</option>
+                                <option value = "10 Years">10 Years</option>
                             </select>
                         </div>
                     </form>

@@ -18,12 +18,12 @@ class App extends React.Component {
             seeds: [],
             seedsHist: [],
             currentPlant: '',
-            wateringFrequency: 3*60*60*1000
+            wateringFrequency: ''
         }
     }
 
     setWateringFrequency (frequency) {
-        var frequencies = [ 5*1000, 60*1000, 30*60*1000, 60*60*1000, 3*60*60*1000];
+        var frequencies = [ 30*1000, 5*1000, 60*1000, 30*60*1000, 60*60*1000, 3*60*60*1000, 10*365*24*60*60*1000];
         this.setState({
             wateringFrequency: frequencies[frequency]
         });
@@ -89,6 +89,9 @@ class App extends React.Component {
     }
 
     changePlant(plant) {
+        var newCurrPlant = this.state.seeds.filter((seed) => {
+            return seed.name === plant.name;
+        })
         this.setState({
             currentPlant: plant
         })
