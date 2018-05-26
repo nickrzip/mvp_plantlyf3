@@ -116,9 +116,12 @@
     min-width: 40px;
 }
 
-.btn-primary {
+.btn-success {
     margin-top: 2vw;
     margin-left: 2vw;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #fff;
 }
 
 .btn-secondary {

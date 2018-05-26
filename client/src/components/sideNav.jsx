@@ -15,10 +15,10 @@ class SideNav extends React.Component {
                 classNames = "sidenav"
                 timeout = {700}>
                 <div className = 'side-nav'>
-                    <div className = "side-nav-spacing btn btn-primary btn-plant" onClick = {this.props.clickHandler}>Hide Side Nav</div>
+                    <div className = "side-nav-spacing btn btn-success btn-plant" onClick = {this.props.clickHandler}>Hide Side Nav</div>
                     {this.props.seeds.map((seed, index) => {
                         return (
-                            <div className = "side-nav-spacing btn btn-primary btn-plant" key = {index} onClick = {() => {
+                            <div className = "side-nav-spacing btn btn-success btn-plant" key = {index} onClick = {() => {
                                 this.props.changePlant(seed)}
                             }>{seed.name}</div>
                         )
